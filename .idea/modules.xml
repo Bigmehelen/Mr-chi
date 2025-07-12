@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/AssignmentOop/AirCondition/AirCondition.iml" filepath="$PROJECT_DIR$/AssignmentOop/AirCondition/AirCondition.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AssignmentOop/Automobile/Automobile.iml" filepath="$PROJECT_DIR$/AssignmentOop/Automobile/Automobile.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EnumExercise/EnumExercise.iml" filepath="$PROJECT_DIR$/EnumExercise/EnumExercise.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AssignmentOop/Estore/Estore.iml" filepath="$PROJECT_DIR$/AssignmentOop/Estore/Estore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Mr Chi.iml" filepath="$PROJECT_DIR$/Mr Chi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/QueueWork/QueueWork.iml" filepath="$PROJECT_DIR$/QueueWork/QueueWork.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chibuzo/chibuzo.iml" filepath="$PROJECT_DIR$/chibuzo/chibuzo.iml" />
+    </modules>
+  </component>
+</project>
