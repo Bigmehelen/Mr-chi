@@ -13,7 +13,7 @@ public class Account {
         this.accountNumber = accountNumber;
     }
 
-    public String getMyName(){
+    public String getMyName() {
         return myName.toString();
     }
 
