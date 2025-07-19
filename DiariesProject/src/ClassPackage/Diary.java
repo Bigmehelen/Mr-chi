@@ -2,15 +2,16 @@ package ClassPackage;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Diaries {
+public class Diary {
     private boolean isLocked;
     private String userName;
     private String password;
-    private List<Entry> entries = new ArrayList<>();
+    private List<Entry> entries;
 
-public Diaries(String userName, String password) {
+public Diary(String userName, String password) {
     this.userName = userName;
     this.password = password;
+    this.entries = new ArrayList<>();
 }
 
     public void lockDiary() {
@@ -29,12 +30,26 @@ public Diaries(String userName, String password) {
     entries.add(new Entry(id, title, body));
     }
 
-    public Entry findEntry(int id) {
-        for (Entry entry : entries) {
-            if (entry.getId() == id) {
-                return entry;
+    public List<Entry> getEntries() {
+    return entries;
+    }
+
+    private void validateEmptyDiary() {
+        if(entries.isEmpty()) {
+            throw new EmptyDiaryException("Diary cannot be empty");
+        }
+    }
+
+    public void deleteEntry(int id) {
+        validateEmptyDiary();
+        for(Entry entry: entries) {
+            if(entry.getId() == id) {
+                entries.remove(entry);
+                break;
             }
         }
-        return null;
     }
+
+
+
 }
