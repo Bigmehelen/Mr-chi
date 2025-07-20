@@ -14,6 +14,13 @@ public class Entry {
         this.body = body;
         this.dateCreated = LocalDateTime.now();
     }
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public int getId() {
         return id;

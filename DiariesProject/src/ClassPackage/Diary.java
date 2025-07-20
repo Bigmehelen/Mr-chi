@@ -8,11 +8,20 @@ public class Diary {
     private String password;
     private List<Entry> entries;
 
+    private static int userId = 100;
+
 public Diary(String userName, String password) {
     this.userName = userName;
     this.password = password;
     this.entries = new ArrayList<>();
 }
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 
     public void lockDiary() {
         this.isLocked = true;
@@ -26,8 +35,8 @@ public Diary(String userName, String password) {
         return isLocked;
     }
 
-    public void createEntry(int id, String title, String body) {
-    entries.add(new Entry(id, title, body));
+    public void createEntry( String title, String body) {
+    entries.add(new Entry(++userId,title, body));
     }
 
     public List<Entry> getEntries() {
@@ -50,6 +59,26 @@ public Diary(String userName, String password) {
         }
     }
 
+    public Entry findEntryById(int id) {
+        validateEmptyDiary();
+        for(Entry entry: entries) {
+            if(entry.getId() == id) {
+                return entry;
+            }
+        }
+        throw new EmptyDiaryException("Entry with id " + id + " not found");
+    }
 
-
+    public void updateEntry(int id, String title, String body) {
+        validateEmptyDiary();
+        for(Entry entry: entries) {
+            if(entry.getId() == id) {
+                entry.setTitle(title);
+                entry.setBody(body);
+            }
+        }
+    }
 }
+
+
+

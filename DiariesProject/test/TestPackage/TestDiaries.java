@@ -11,29 +11,29 @@ public class TestDiaries {
 
     @BeforeEach
     void setUp() {
-        myDiaries = new Diaries("wande", "passcode");
-    }
-    @Test
-    public void diariesIsLockedTest() {
-      myDiaries.lockDiary();
-      assertTrue(myDiaries.isLocked());
+        myDiaries = new Diaries("john doe", "blue22");
     }
 
     @Test
-    public void diariesIsUnlockedTest() {
-        myDiaries.lockDiary();
-        assertTrue(myDiaries.isLocked());
-        myDiaries.unlockDiary("passcode");
-        assertFalse(myDiaries.isLocked());
+    public void diariesCanAddTest() {
+        myDiaries.add("john doe", "blue22");
+        assertEquals(1, myDiaries.getDiaries().size());
     }
 
     @Test
-    public void diariesCanCreateEntryTest() {
-        myDiaries.unlockDiary("passcode");
-        assertFalse(myDiaries.isLocked());
+    public void diariesCanFindByUserNameTest() {
+        myDiaries.add("john doe", "blue22");
+        myDiaries.add("wande helen", "sky22");
 
-        myDiaries.createEntry(1, "Alice", "body");
-        assertEquals(1, myDiaries.findEntry(1));
+        assertEquals("wande helen", myDiaries.findByUserName("wande helen").getUserName());
     }
 
+    @Test
+    public void diariesCanDeleteTest() {
+        myDiaries.add("john doe", "blue22");
+        myDiaries.add("wande helen", "sky22");
+
+        myDiaries.delete("john doe", "blue22");
+        assertEquals(1, myDiaries.getDiaries().size());
+    }
 }
