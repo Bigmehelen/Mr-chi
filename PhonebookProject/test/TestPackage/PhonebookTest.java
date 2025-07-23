@@ -23,6 +23,14 @@ public class PhonebookTest{
     }
 
     @Test
+    public void phonebookCanViewContactTest(){
+        phoneBooks.addContact("wande helen", "08088406240");
+        phoneBooks.addContact("olamide ola", "08030591425");
+        assertEquals(3, phoneBooks.getContact().size());
+
+    }
+
+    @Test
     public void phonebookCanDeleteContactTest(){
         phoneBooks.addContact("wande helen", "08088406240");
         phoneBooks.addContact("olamide ola", "08030591425");
@@ -78,5 +86,10 @@ public class PhonebookTest{
     @Test
     public void phonebookCanThrowException_NameSaveWithWhiteSpaceTest() {
         assertThrows(InvalidContactException.class, () -> phoneBooks.addContact(" ", "08088406240"));
+    }
+
+    @Test
+    public void phonebookCanThrowException_NameIsLongerThan25CharacterTest() {
+        assertThrows(InvalidContactException.class, () -> phoneBooks.addContact("wandelicious Papaya In The Building", "080884062400808840624012345"));
     }
 }

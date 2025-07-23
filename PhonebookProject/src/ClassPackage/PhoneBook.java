@@ -33,6 +33,13 @@ public class PhoneBook {
         return findByPhoneNumber(phoneNumber).toString();
     }
 
+    public void viewContact() {
+        List<Contact> allNames = new ArrayList<>();
+        for (Contact contact : contacts) {
+            allNames.add(contact);
+        }
+        System.out.println(allNames.toString());
+    }
 
 
 
@@ -55,7 +62,9 @@ public class PhoneBook {
 
     private void validateAddContact(String name, String phoneNumber) {
         if(name.isBlank()) throw new InvalidContactException("Name cannot be blank");
+        if(name.length() > 25) throw new InvalidContactException("Name cannot be greater than 25 characters");
         if(phoneNumber.isBlank()) throw new InvalidContactException("Phone number cannot be blank");
+        if(phoneNumber.length() > 25) throw new InvalidContactException("Phone number cannot be greater than 25 characters");
     }
 
     private Contact findByName(String name) {
@@ -75,6 +84,7 @@ public class PhoneBook {
         }
         throw new InvalidPhoneNumberException("Contact with Phone number " + phoneNumber + " not found");
     }
+
 
 
 }
