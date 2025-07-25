@@ -1,5 +1,6 @@
 package TestPackage;
 
+import ClassPackage.EmptyContactException;
 import ClassPackage.InvalidContactException;
 import ClassPackage.PhoneBook;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,7 +27,7 @@ public class PhonebookTest{
     public void phonebookCanViewContactTest(){
         phoneBooks.addContact("wande helen", "08088406240");
         phoneBooks.addContact("olamide ola", "08030591425");
-        assertEquals(3, phoneBooks.getContact().size());
+        assertEquals(2, phoneBooks.getContact().size());
 
     }
 
@@ -91,5 +92,10 @@ public class PhonebookTest{
     @Test
     public void phonebookCanThrowException_NameIsLongerThan25CharacterTest() {
         assertThrows(InvalidContactException.class, () -> phoneBooks.addContact("wandelicious Papaya In The Building", "080884062400808840624012345"));
+    }
+
+    @Test
+    public void phonebookCanThrowException_IfUserAttemtptToEditAnEmptyContactTest() {
+        assertThrows(EmptyContactException.class, () -> phoneBooks.editContact("Abolaji", "Abiola", "08148260470"));
     }
 }

@@ -17,31 +17,40 @@ public class PhoneBook {
     }
 
     public void deleteContact(String name) {
+        isPhonebookEmpty();
       contacts.remove((findByName(name)));
     }
 
     public void editContact(String name, String newName, String phoneNumber) {
+        isPhonebookEmpty();
         findByName(name).setName(newName);
         findByName(newName).setPhoneNumber(phoneNumber);
     }
 
     public String findContactByName(String name) {
+        isPhonebookEmpty();
         return findByName(name).toString();
 
     }
     public String findContactByPhoneNumber(String phoneNumber) {
+        isPhonebookEmpty();
         return findByPhoneNumber(phoneNumber).toString();
     }
 
     public void viewContact() {
-        List<Contact> allNames = new ArrayList<>();
+        isPhonebookEmpty();
+        List<Contact> allContact = new ArrayList<>();
         for (Contact contact : contacts) {
-            allNames.add(contact);
+            allContact.add(contact);
         }
-        System.out.println(allNames.toString());
+        System.out.println(allContact.toString());
     }
 
-
+    public void isPhonebookEmpty() {
+        if(contacts.isEmpty()){
+            throw new EmptyContactException("Contact list is empty");
+        }
+    }
 
 
 

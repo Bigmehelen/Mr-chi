@@ -56,7 +56,13 @@ public class PhoneBookApp {
         String name = input("Enter your name: ");
         String newName = input("Enter your new name: ");
         String phoneNumber = input("Enter your phone number: ");
-        phoneBook.editContact(name, newName, phoneNumber);
+        try {
+            phoneBook.editContact(name, newName, phoneNumber);
+        }
+        catch (EmptyContactException e) {
+            print("Contact name is empty!");
+            throw e;
+        }
         print("Contact edited successfully!");
         printMainMenu();
     }
