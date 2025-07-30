@@ -1,6 +1,7 @@
 package ClassPackage;
 
 public class EmptyContactException extends RuntimeException {
-    public EmptyContactException(String contactListIsEmpty) {
+    public EmptyContactException(String message) {
+        super(message);
     }
 }

@@ -1,5 +1,6 @@
 package ClassPackage;
 
+import javax.swing.*;
 import java.util.Scanner;
 
 public class PhoneBookApp {
@@ -9,28 +10,25 @@ public class PhoneBookApp {
         printMainMenu();
     }
 
-    public static String print(String message){
-        System.out.println(message);
-        return message;
+    public static void print(String message){
+        JOptionPane.showMessageDialog(null, message);
     }
 
     public static String input(String message){
-        Scanner sc = new Scanner(System.in);
-        System.out.println(message);
-        return sc.nextLine();
+        return JOptionPane.showInputDialog(null, message);
     }
 
     private static void printMainMenu(){
         String message = """
-     === Welcome To Phonebook === 
+     === Welcome To Phonebook ===\s
      1 -> Add a new Contact
-     2 -> Edit a Contact 
+     2 -> Edit a Contact\s
      3 -> Delete a Contact
      4 -> Find a Contact By Name
      5 -> View all Contacts
-     6-> Exit 
-     0 -> Back      
-    """;
+     0-> Exit\s
+         \s
+   \s""";
         print (message);
         switch (input("Choose an option")){
             case "1" -> addContact();
@@ -38,52 +36,71 @@ public class PhoneBookApp {
             case "3" -> deleteContact();
             case "4" -> findContactByName();
             case "5" -> viewContact();
-            case "6" -> printMainMenu();
-            case "0" -> printMainMenu();
-            default -> print("Invalid option");
+            case "0" -> System.exit(0);
+            default ->{
+                print("Invalid option");
+                printMainMenu();
+            }
         }
     }
 
     public static void addContact() {
-        String name = input("Enter your name: ");
-        String phoneNumber = input("Enter your phone number: ");
-        phoneBook.addContact(name, phoneNumber);
-        print("Contact added successfully!");
-        printMainMenu();
+        try {
+            phoneBook.addContact(input("Enter name"), input("Enter phone number"));
+            print("Contact added successfully!");
+            printMainMenu();
+        }
+        catch (InvalidContactException | EmptyContactException e) {
+            print(e.getMessage());
+            printMainMenu();
+        }
     }
 
     public static void editContact() {
-        String name = input("Enter your name: ");
-        String newName = input("Enter your new name: ");
-        String phoneNumber = input("Enter your phone number: ");
         try {
-            phoneBook.editContact(name, newName, phoneNumber);
+            phoneBook.editContact(input("Enter contact to be edited: "), input("Enter new name: "), input("Enter new phone number: "));
+            print("Contact edited successfully!");
+            printMainMenu();
         }
-        catch (EmptyContactException e) {
-            print("Contact name is empty!");
-            throw e;
+        catch (InvalidContactException | EmptyContactException e) {
+            print(e.getMessage());
+            printMainMenu();
         }
-        print("Contact edited successfully!");
-        printMainMenu();
     }
 
     public static void deleteContact() {
-        String name = input("Enter your name: ");
-        phoneBook.deleteContact(name);
-        print("Contact deleted successfully!");
-        printMainMenu();
+        try {
+            phoneBook.deleteContact(input("Enter contact to be deleted: "));
+            print("Contact deleted successfully!");
+            printMainMenu();
+        }
+        catch (InvalidContactException | EmptyContactException e) {
+            print(e.getMessage());
+            printMainMenu();
+        }
     }
 
     public static void findContactByName() {
-        String name = input("Enter your name: ");
-        phoneBook.findContactByName(name);
-        print("Contact found successfully!");
-        printMainMenu();
+        try {
+            phoneBook.findContactByName(input("Enter contact name: "));
+            print("Contact found successfully!");
+            printMainMenu();
+        }
+        catch (InvalidContactException | EmptyContactException e) {
+            print(e.getMessage());
+            printMainMenu();
+        }
     }
 
     private static void viewContact() {
-        phoneBook.viewContact();
-        printMainMenu();
+        try {
+            phoneBook.viewContact();
+            printMainMenu();
+        }
+        catch (InvalidContactException | EmptyContactException e) {
+            print(e.getMessage());
+            printMainMenu();
+        }
     }
 
 }

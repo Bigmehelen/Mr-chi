@@ -95,7 +95,7 @@ public class PhonebookTest{
     }
 
     @Test
-    public void phonebookCanThrowException_IfUserAttemtptToEditAnEmptyContactTest() {
+    public void phonebookCanThrowException_IfUserAttemptToEditAnEmptyContactTest() {
         assertThrows(EmptyContactException.class, () -> phoneBooks.editContact("Abolaji", "Abiola", "08148260470"));
     }
 }

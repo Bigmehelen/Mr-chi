@@ -7,8 +7,10 @@ public class PhoneBook {
 
     private List<Contact> contacts = new ArrayList<>();
 
+    
     public void addContact(String name, String phoneNumber) {
-        validateAddContact(name, phoneNumber);
+        validateAddPhoneNumber(name, phoneNumber);
+        validateAddContactByName(name,phoneNumber );
         contacts.add(new Contact(name, phoneNumber));
     }
 
@@ -63,17 +65,26 @@ public class PhoneBook {
 
 
 
+//if(name.length() > 25) throw new InvalidContactException("Name cannot be greater than 25 characters");
+
+//        if(phoneNumber.length() > 25) throw new InvalidContactException("Phone number cannot be greater than 25 characters");
 
 
 
 
 
+    private Contact validateAddPhoneNumber(String name, String phoneNumber) {
+        if(!phoneNumber.isBlank()) {
+            return  new Contact(name, phoneNumber);
+        }
+        throw new InvalidContactException("Phone number is blank");
+    }
 
-    private void validateAddContact(String name, String phoneNumber) {
-        if(name.isBlank()) throw new InvalidContactException("Name cannot be blank");
-        if(name.length() > 25) throw new InvalidContactException("Name cannot be greater than 25 characters");
-        if(phoneNumber.isBlank()) throw new InvalidContactException("Phone number cannot be blank");
-        if(phoneNumber.length() > 25) throw new InvalidContactException("Phone number cannot be greater than 25 characters");
+    private Contact validateAddContactByName(String name, String phoneNumber) {
+        if(!name.isBlank()) {
+            return new Contact(name, phoneNumber);
+        }
+        throw new InvalidContactException("Name is empty");
     }
 
     private Contact findByName(String name) {

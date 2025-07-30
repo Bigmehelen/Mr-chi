@@ -1,6 +1,7 @@
 package ClassPackage;
 
 public class InvalidContactException extends RuntimeException{
-    public InvalidContactException(String contactNotFound) {
+    public InvalidContactException(String message) {
+        super(message);
     }
 }
