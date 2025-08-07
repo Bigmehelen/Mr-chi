@@ -1,0 +1,92 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body .BackToSch {
+    width: 100%;
+    height: 70px;
+}
+
+.header-cover{
+    width: 100%;
+}
+
+.header-cover .header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    height: 35px;
+}
+
+.header img{
+    width: 85px;
+    height: 18px;
+    padding: 5px;
+}
+
+.header2 img{
+    width: 120px;
+    height:35px;
+}
+
+.header2 input{
+    width: 400px;
+    height: 25px;
+}
+
+.header_nav a{
+    color:white;
+    text-decoration: none;
+    padding: 15px;
+    font-family: sans-serif;
+}
+.header_nav .store:hover{
+    color: #ed017f;
+    background-color: white;
+}
+.header_nav .store2:hover{
+     color: #ed017f;
+    background-color: white;
+}
+
+.header_nav2 a{
+    color:white;
+    text-decoration: none;
+    padding: 15px;
+    gap: 15px;
+}
+
+.header_nav2 .signup:hover{
+    color: #ed017f;
+    background-color: white;
+}
+
+.header_nav3  {
+    width: 100px;
+    height: 15px;
+    background-color: seagreen;
+    text-decoration: none;
+    padding: 15px;
+}
+.header_nav3 a{
+    color: white;
+    gap: 15px;
+    text-decoration: none;
+    padding: 10px;
+}
+.header2{
+    display: flex;
+    justify-content: center;
+    background-color: #ed017f;
+    gap: 20px;
+    align-items: center;
+    height: 60px;
+    font-size: 12px;
+}
+
+.header2:hover a{
+    color: white;
+}
