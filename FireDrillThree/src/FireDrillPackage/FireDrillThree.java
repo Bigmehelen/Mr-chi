@@ -4,19 +4,19 @@ import java.util.Arrays;
 
 public class FireDrillThree {
 
-    public static int[] TaskOne(int[] array){
+    public static int[] taskOne(int[] array){
         return array;
     }
 
-    public static void TaskTwo(int[] array){
+    public static void taskTwo(int[] array){
         System.out.println(Arrays.toString(array));
     }
 
-    public static void TaskThree(int[] array){
+    public void taskThree(int[] array){
         System.out.print(Arrays.toString(array));
     }
 
-    public static int[] TaskFour(int[] array){
+    public int[] taskFour(int[] array){
         int evenIndex = 0;
         for(int count = 0; count < array.length; count++) {
             if( count % 2 == 0) {
@@ -27,10 +27,11 @@ public class FireDrillThree {
         int index = 0;
         for(int count = 0; count < array.length; count++) {
             if(count % 2 == 0) {
-                newArray[count] = evenIndex[index];
+                newArray[index] = array[count];
+                index++;
             }
         }
         return newArray;
     }
-    
+
 }
