@@ -10,6 +10,21 @@ public class Drug{
     private LocalDate expiryDate;
     private LocalDate manufactureDate;
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public void setManufactureDate(LocalDate manufactureDate) {
+        this.manufactureDate = manufactureDate;
+    }
+
+    public void setExpiryDate(LocalDate expiryDate) {
+        this.expiryDate = expiryDate;
+    }
 
     public void setId(int id) {
         this.id = id;
